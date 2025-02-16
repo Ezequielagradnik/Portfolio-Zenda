@@ -29,3 +29,5 @@ Thumbs.db
 
 # ⚡ Archivos de Git LFS que se rastrean aparte
 .gitattributes
+  # Ignorar node_modules
+node_modules/
