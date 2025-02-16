@@ -1,36 +1,65 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight, Mail, Phone } from "lucide-react"
+import { Mail, Phone, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import ProjectPreview from "@/components/ProjectPreview"
+import { motion } from "framer-motion"
 
 const projects = [
   {
     url: "https://shop.kurtisconner.com",
-    image: "/KURTIS.png",
     title: "Kurtis Conner Shop",
+    description: "E-commerce platform for merchandise",
+    image: "/KURTIS.png",
   },
   {
     url: "https://linkup-eta.vercel.app",
-    image: "/linkup.png",
     title: "LinkUp",
+    description: "Social networking application",
+    image: "/linkup.png",
   },
   {
     url: "https://www.energyhumanities.ca",
-    image: "/energy.png",
     title: "Energy Humanities",
+    description: "Educational resource for energy studies",
+    image: "/energy.png",
   },
   {
     url: "https://superiorrental.ae",
-    image: "/super.png",
     title: "Superior Rental",
+    description: "Equipment rental service platform",
+    image: "/super.png",
   },
   {
     url: "https://gmz.ae/es",
-    image: "/gmz.png",
     title: "GMZ",
+    description: "Corporate website for GMZ",
+    image: "/gmz.png",
+  },
+  
+]
+
+const pricingPlans = [
+  {
+    name: "Landing Page",
+    price: "$450",
+    features: ["Custom design", "Mobile responsive", "Contact form", "SEO optimization"],
+  },
+  {
+    name: "Corporate Website",
+    price: "$849",
+    features: ["Up to 5 pages", "Content Management System", "Basic SEO package"],
+  },
+  {
+    name: "E-commerce",
+    price: "$1300",
+    features: ["Product catalog", "Shopping cart", "Secure payment gateway", "Order management"],
+  },
+  {
+    name: "Advanced Features",
+    price: "$1500",
+    features: ["Custom functionality", "API integrations", "Advanced analytics", "Priority support"],
   },
 ]
 
@@ -48,105 +77,134 @@ const handleWhatsAppClick = (packageName: string) => {
 }
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0)
   const [currentLang, setCurrentLang] = useState("en")
-  const [autoplay, setAutoplay] = useState(true)
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout
-    if (autoplay) {
-      interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % projects.length)
-      }, 3000)
-    }
-    return () => clearInterval(interval)
-  }, [autoplay])
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % projects.length)
-    setAutoplay(false)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + projects.length) % projects.length)
-    setAutoplay(false)
-  }
 
   return (
-    <div className="min-h-screen bg-white">
-      <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-sm">
-        <div className="container flex h-16 items-center justify-between">
-          <Image src="/zenda.png" alt="Zenda Logo" width={120} height={40} className="object-contain w-auto h-8" />
-          <nav className="flex items-center gap-6">
-            <select
-              value={currentLang}
-              onChange={(e) => setCurrentLang(e.target.value)}
-              className="rounded-md border-0 bg-transparent py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-orange-500"
-            >
-              {languages.map((lang) => (
-                <option key={lang.code} value={lang.code}>
-                  {lang.name}
-                </option>
-              ))}
-            </select>
-          </nav>
+    <div className="min-h-screen bg-gray-50">
+      <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            <Image src="/zenda.png" alt="Zenda Logo" width={120} height={40} className="object-contain w-auto h-8" />
+            <nav className="flex items-center gap-6">
+              <select
+                value={currentLang}
+                onChange={(e) => setCurrentLang(e.target.value)}
+                className="rounded-md border-0 bg-transparent py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-orange-500"
+              >
+                {languages.map((lang) => (
+                  <option key={lang.code} value={lang.code}>
+                    {lang.name}
+                  </option>
+                ))}
+              </select>
+            </nav>
+          </div>
         </div>
       </header>
 
-      {/* Enhanced Hero Section */}
-      <section className="relative py-20 bg-gradient-to-b from-white to-orange-50">
-        <div className="container">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-b from-orange-50 to-white py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold tracking-tight sm:text-7xl text-gray-900 mb-6">
+            <motion.h1
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl font-bold tracking-tight sm:text-6xl text-gray-900 mb-6"
+            >
               <span className="text-orange-500">Zenda</span> Web Solutions
-            </h1>
-            <p className="mt-6 text-xl leading-8 text-gray-600 mb-8">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mt-6 text-xl leading-8 text-gray-600 mb-8"
+            >
               {currentLang === "en"
                 ? "Transforming Ideas into Powerful Digital Experiences"
                 : currentLang === "es"
                   ? "Transformando Ideas en Poderosas Experiencias Digitales"
                   : "Transformando Ideias em Poderosas Experiências Digitais"}
-            </p>
-            <div className="flex justify-center gap-4">
-            
-            </div>
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex justify-center gap-4"
+            >
+              <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white">
+                {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
+              </Button>
+              <Button size="lg" variant="outline" className="border-orange-500 text-orange-500 hover:bg-orange-50">
+                {currentLang === "en" ? "Learn More" : currentLang === "es" ? "Saber Más" : "Saiba Mais"}
+              </Button>
+            </motion.div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
-      {/* Projects Carousel */}
-      <section className="py-20 bg-gray-50">
-        <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12">
+      {/* Projects Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
             {currentLang === "en" ? "Our Projects" : currentLang === "es" ? "Nuestros Proyectos" : "Nossos Projetos"}
           </h2>
-          <div className="relative">
-            <ProjectPreview {...projects[currentSlide]} />
-            <button
-              onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-lg hover:bg-white"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-lg shadow-md overflow-hidden"
+              >
+                <Image
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  width={600}
+                  height={400}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900">{project.title}</h3>
+                  <p className="text-gray-600 mb-4">{project.description}</p>
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-orange-500 hover:text-orange-600"
+                  >
+                    {currentLang === "en" ? "Visit Site" : currentLang === "es" ? "Visitar Sitio" : "Visitar Site"}
+                    <svg
+                      className="w-5 h-5 ml-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Team Section */}
-      <section className="py-20">
-        <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12">
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
             {currentLang === "en" ? "Our Team" : currentLang === "es" ? "Nuestro Equipo" : "Nossa Equipe"}
           </h2>
           <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            <div className="text-center">
+            <motion.div whileHover={{ scale: 1.05 }} className="text-center">
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-02-16%20a%20las%2016.03.10_f2ee78cf.jpg-tb4HhpDEROWyEe4fUVqcvZPqtWl3pV.jpeg"
                 alt="Nicolas Said"
@@ -154,10 +212,10 @@ export default function Home() {
                 height={200}
                 className="mx-auto rounded-full mb-4 object-cover aspect-square"
               />
-              <h3 className="text-xl font-semibold">Nicolas Said</h3>
+              <h3 className="text-xl font-semibold text-gray-900">Nicolas Said</h3>
               <p className="text-gray-600">CEO & Co-founder</p>
-            </div>
-            <div className="text-center">
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} className="text-center">
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-02-16%20a%20las%2016.03.31_a341f495.jpg-fWpSgI4qmHkZeuLKFOjGcmJcZxQ0co.jpeg"
                 alt="Ezequiel Agradnik"
@@ -165,119 +223,68 @@ export default function Home() {
                 height={200}
                 className="mx-auto rounded-full mb-4 object-cover aspect-square"
               />
-              <h3 className="text-xl font-semibold">Ezequiel Agradnik</h3>
+              <h3 className="text-xl font-semibold text-gray-900">Ezequiel Agradnik</h3>
               <p className="text-gray-600">CTO & Co-founder</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Updated Pricing Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12">
+      {/* Pricing Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
             {currentLang === "en" ? "Our Packages" : currentLang === "es" ? "Nuestros Paquetes" : "Nossos Pacotes"}
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            <div className="bg-orange-500 p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold mb-4 text-white">Landing Page</h3>
-              <p className="text-3xl font-bold mb-6 text-white">$450</p>
-              <p className="text-white mb-6">
-                {currentLang === "en"
-                  ? "Ideal for promoting a specific product or service"
-                  : currentLang === "es"
-                    ? "Ideal para promocionar un producto o servicio específico"
-                    : "Ideal para promover um produto ou serviço específico"}
-              </p>
-              <Button
-                className="w-full bg-white text-orange-500 hover:bg-orange-100"
-                onClick={() => handleWhatsAppClick("Landing Page")}
+            {pricingPlans.map((plan, index) => (
+              <motion.div
+                key={plan.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white p-6 rounded-lg shadow-md border border-gray-200"
               >
-                {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
-              </Button>
-            </div>
-            <div className="bg-orange-500 p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold mb-4 text-white">
-                {currentLang === "en"
-                  ? "Corporate Website"
-                  : currentLang === "es"
-                    ? "Sitio Corporativo"
-                    : "Site Corporativo"}
-              </h3>
-              <p className="text-3xl font-bold mb-6 text-white">$849</p>
-              <p className="text-white mb-6">
-                {currentLang === "en"
-                  ? "Present your company professionally"
-                  : currentLang === "es"
-                    ? "Presenta tu empresa de manera profesional"
-                    : "Apresente sua empresa profissionalmente"}
-              </p>
-              <Button
-                className="w-full bg-white text-orange-500 hover:bg-orange-100"
-                onClick={() => handleWhatsAppClick("Corporate Website")}
-              >
-                {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
-              </Button>
-            </div>
-            <div className="bg-orange-500 p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold mb-4 text-white">E-commerce</h3>
-              <p className="text-3xl font-bold mb-6 text-white">$1300</p>
-              <p className="text-white mb-6">
-                {currentLang === "en"
-                  ? "Sell your products online securely"
-                  : currentLang === "es"
-                    ? "Vende tus productos en línea de manera segura"
-                    : "Venda seus produtos online com segurança"}
-              </p>
-              <Button
-                className="w-full bg-white text-orange-500 hover:bg-orange-100"
-                onClick={() => handleWhatsAppClick("E-commerce")}
-              >
-                {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
-              </Button>
-            </div>
-            <div className="bg-orange-500 p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold mb-4 text-white">
-                {currentLang === "en"
-                  ? "Advanced Features"
-                  : currentLang === "es"
-                    ? "Funcionalidades Avanzadas"
-                    : "Recursos Avançados"}
-              </h3>
-              <p className="text-3xl font-bold mb-6 text-white">$1500</p>
-              <p className="text-white mb-6">
-                {currentLang === "en"
-                  ? "Includes bookings, memberships and more"
-                  : currentLang === "es"
-                    ? "Incluye reservas, membresías y más"
-                    : "Inclui reservas, associações e mais"}
-              </p>
-              <Button
-                className="w-full bg-white text-orange-500 hover:bg-orange-100"
-                onClick={() => handleWhatsAppClick("Advanced Features")}
-              >
-                {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
-              </Button>
-            </div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-900">{plan.name}</h3>
+                <p className="text-3xl font-bold mb-6 text-orange-500">{plan.price}</p>
+                <ul className="mb-6 space-y-2">
+                  {plan.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center text-gray-600">
+                      <Check className="h-5 w-5 text-green-500 mr-2" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Button
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white"
+                  onClick={() => handleWhatsAppClick(plan.name)}
+                >
+                  {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
+                </Button>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-20">
-        <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12">
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
             {currentLang === "en" ? "Contact Us" : currentLang === "es" ? "Contáctanos" : "Contate-nos"}
           </h2>
           <div className="flex flex-col items-center gap-4 max-w-md mx-auto">
             <a
               href="mailto:eagradnik@gmail.com"
-              className="flex items-center gap-2 text-gray-600 hover:text-orange-500"
+              className="flex items-center gap-2 text-gray-600 hover:text-orange-500 transition-colors duration-300"
             >
               <Mail className="h-5 w-5" />
               eagradnik@gmail.com
             </a>
-            <a href="tel:+5491131954757" className="flex items-center gap-2 text-gray-600 hover:text-orange-500">
+            <a
+              href="tel:+5491131954757"
+              className="flex items-center gap-2 text-gray-600 hover:text-orange-500 transition-colors duration-300"
+            >
               <Phone className="h-5 w-5" />
               +54 911 3195-4757
             </a>
@@ -286,8 +293,8 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 border-t">
-        <div className="container">
+      <footer className="py-8 bg-gray-100 border-t border-gray-200">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center items-center">
             <p className="text-sm text-gray-600">
               © 2025 Zenda.{" "}
