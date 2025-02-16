@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
 
 :root {
   --background: 220 220 220;
@@ -27,39 +29,59 @@ body {
 }
 
 .container {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  max-width: 7xl;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 /* Custom styles for the language selector */
 select {
-  @apply appearance-none bg-transparent border border-gray-300 rounded-md px-3 py-1.5;
-  @apply focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent;
+  appearance: none;
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.5);
 }
 
 /* Custom styles for the project carousel */
 .project-preview {
-  @apply relative aspect-video rounded-lg overflow-hidden;
-  @apply transition-all duration-300 ease-in-out;
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
 }
 
 .project-preview:hover {
-  @apply transform scale-105;
+  transform: scale(1.05);
 }
 
 /* Custom styles for team member images */
 .team-member-image {
-  @apply rounded-full object-cover aspect-square;
-  @apply transition-all duration-300 ease-in-out;
+  border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 1;
+  transition: all 0.3s ease-in-out;
 }
 
 .team-member-image:hover {
-  @apply transform scale-105;
+  transform: scale(1.05);
 }
 
 /* Custom styles for buttons */
 .button-primary {
-  @apply bg-orange-500 text-white hover:bg-orange-600;
-  @apply transition-colors duration-200;
+  background-color: #ff7f00;
+  color: #fff;
+  transition: colors 0.2s;
 }
 
 /* Custom styles for sections */
@@ -72,65 +94,81 @@ section {
 h1,
 h2,
 h3 {
-  @apply font-bold tracking-tight;
+  font-weight: bold;
 }
 
 h1 {
-  @apply text-4xl md:text-6xl;
+  font-size: 4rem;
 }
 
 h2 {
-  @apply text-3xl md:text-4xl;
+  font-size: 3rem;
 }
 
 h3 {
-  @apply text-xl md:text-2xl;
+  font-size: 2rem;
 }
 
 /* Custom styles for navigation arrows */
 .nav-arrow {
-  @apply absolute top-1/2 -translate-y-1/2;
-  @apply bg-white/80 p-2 rounded-full shadow-lg hover:bg-white;
-  @apply transition-all duration-200;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.5);
+  transition: all 0.2s;
 }
 
 .nav-arrow.prev {
-  @apply left-4;
+  left: 1rem;
 }
 
 .nav-arrow.next {
-  @apply right-4;
+  right: 1rem;
 }
 
 /* Custom styles for cards */
 .card {
-  @apply bg-white rounded-lg shadow-lg p-6;
-  @apply transition-all duration-300 ease-in-out;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.5);
+  padding: 1.5rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .card:hover {
-  @apply shadow-xl transform -translate-y-1;
+  box-shadow: 0 0 0 4px rgba(255, 165, 0, 0.5);
+  transform: translateY(-1px);
 }
 
 /* Custom styles for links */
 a {
-  @apply text-orange-500 hover:text-orange-600;
-  @apply transition-colors duration-200;
+  color: #ff7f00;
+  transition: colors 0.2s;
 }
 
 /* Custom styles for the header */
 .header {
-  @apply sticky top-0 z-50 w-full;
-  @apply bg-white/80 backdrop-blur-sm border-b;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid;
 }
 
 /* Custom styles for the logo */
 .logo {
-  @apply h-8 w-auto;
-  @apply transition-opacity duration-200;
+  height: 2rem;
+  width: auto;
+  transition: opacity 0.2s;
 }
 
 .logo:hover {
-  @apply opacity-80;
+  opacity: 0.8;
 }
 
+}

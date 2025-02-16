@@ -9,27 +9,27 @@ import ProjectPreview from "@/components/ProjectPreview" // Import the ProjectPr
 const projects = [
   {
     url: "https://shop.kurtisconner.com",
-    image: "/src/KURTIS", // Reemplazar con capturas reales
+    image: "/KURTIS.png", // Reemplazar con capturas reales
     title: "Kurtis Conner Shop",
   },
   {
     url: "https://linkup-eta.vercel.app",
-    image: "/src/linkup", // Reemplazar con capturas reales
+    image: "/linkup.png", // Reemplazar con capturas reales
     title: "LinkUp",
   },
   {
     url: "https://www.energyhumanities.ca",
-    image: "/src/energy", // Reemplazar con capturas reales
+    image: "/energy.png", // Reemplazar con capturas reales
     title: "Energy Humanities",
   },
   {
     url: "https://superiorrental.ae",
-    image: "/src/super", // Reemplazar con capturas reales
+    image: "/super.png", // Reemplazar con capturas reales
     title: "Superior Rental",
   },
   {
     url: "https://gmz.ae/es",
-    image: "/src/gmz", // Reemplazar con capturas reales
+    image: "/gmz.png", // Reemplazar con capturas reales
     title: "GMZ",
   },
 ]
@@ -80,7 +80,7 @@ export default function Home() {
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-02-16%20a%20las%2016.36.40_a8999fb9.jpg-tCwqgEY79UGI5Qz5AxFrHqDj26ZjgN.jpeg"
             alt="Zenda Logo"
-            width={100}
+            width={120}
             height={40}
             className="object-contain h-8"
           />
