@@ -4,32 +4,32 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight, Mail, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import ProjectPreview from "@/components/ProjectPreview" // Import the ProjectPreview component
+import ProjectPreview from "@/components/ProjectPreview"
 
 const projects = [
   {
     url: "https://shop.kurtisconner.com",
-    image: "/KURTIS.png", // Reemplazar con capturas reales
+    image: "/KURTIS.png",
     title: "Kurtis Conner Shop",
   },
   {
     url: "https://linkup-eta.vercel.app",
-    image: "/linkup.png", // Reemplazar con capturas reales
+    image: "/linkup.png",
     title: "LinkUp",
   },
   {
     url: "https://www.energyhumanities.ca",
-    image: "/energy.png", // Reemplazar con capturas reales
+    image: "/energy.png",
     title: "Energy Humanities",
   },
   {
     url: "https://superiorrental.ae",
-    image: "/super.png", // Reemplazar con capturas reales
+    image: "/super.png",
     title: "Superior Rental",
   },
   {
     url: "https://gmz.ae/es",
-    image: "/gmz.png", // Reemplazar con capturas reales
+    image: "/gmz.png",
     title: "GMZ",
   },
 ]
@@ -74,16 +74,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-sm">
         <div className="container flex h-16 items-center justify-between">
-          <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-02-16%20a%20las%2016.36.40_a8999fb9.jpg-tCwqgEY79UGI5Qz5AxFrHqDj26ZjgN.jpeg"
-            alt="Zenda Logo"
-            width={120}
-            height={40}
-            className="object-contain h-8"
-          />
+          <Image src="/zenda.png" alt="Zenda Logo" width={120} height={40} className="object-contain w-auto h-8" />
           <nav className="flex items-center gap-6">
             <select
               value={currentLang}
@@ -100,20 +93,26 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
+      {/* Enhanced Hero Section */}
       <section className="relative py-20 bg-gradient-to-b from-white to-orange-50">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-gray-900">Zenda</h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl font-bold tracking-tight sm:text-7xl text-gray-900 mb-6">
+              <span className="text-orange-500">Zenda</span> Web Solutions
+            </h1>
+            <p className="mt-6 text-xl leading-8 text-gray-600 mb-8">
               {currentLang === "en"
-                ? "Web Development Agency"
+                ? "Transforming Ideas into Powerful Digital Experiences"
                 : currentLang === "es"
-                  ? "Agencia de Desarrollo Web"
-                  : "Agência de Desenvolvimento Web"}
+                  ? "Transformando Ideas en Poderosas Experiencias Digitales"
+                  : "Transformando Ideias em Poderosas Experiências Digitais"}
             </p>
+            <div className="flex justify-center gap-4">
+            
+            </div>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
       {/* Projects Carousel */}
@@ -173,17 +172,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Updated Pricing Section */}
       <section className="py-20 bg-gray-50">
         <div className="container">
           <h2 className="text-3xl font-bold text-center mb-12">
             {currentLang === "en" ? "Our Packages" : currentLang === "es" ? "Nuestros Paquetes" : "Nossos Pacotes"}
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold mb-4">Landing Page</h3>
-              <p className="text-3xl font-bold mb-6">$450</p>
-              <p className="text-gray-600 mb-6">
+            <div className="bg-orange-500 p-6 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-4 text-white">Landing Page</h3>
+              <p className="text-3xl font-bold mb-6 text-white">$450</p>
+              <p className="text-white mb-6">
                 {currentLang === "en"
                   ? "Ideal for promoting a specific product or service"
                   : currentLang === "es"
@@ -191,22 +190,22 @@ export default function Home() {
                     : "Ideal para promover um produto ou serviço específico"}
               </p>
               <Button
-                className="w-full bg-orange-500 hover:bg-orange-600"
+                className="w-full bg-white text-orange-500 hover:bg-orange-100"
                 onClick={() => handleWhatsAppClick("Landing Page")}
               >
                 {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
               </Button>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold mb-4">
+            <div className="bg-orange-500 p-6 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-4 text-white">
                 {currentLang === "en"
                   ? "Corporate Website"
                   : currentLang === "es"
                     ? "Sitio Corporativo"
                     : "Site Corporativo"}
               </h3>
-              <p className="text-3xl font-bold mb-6">$849</p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-3xl font-bold mb-6 text-white">$849</p>
+              <p className="text-white mb-6">
                 {currentLang === "en"
                   ? "Present your company professionally"
                   : currentLang === "es"
@@ -214,16 +213,16 @@ export default function Home() {
                     : "Apresente sua empresa profissionalmente"}
               </p>
               <Button
-                className="w-full bg-orange-500 hover:bg-orange-600"
+                className="w-full bg-white text-orange-500 hover:bg-orange-100"
                 onClick={() => handleWhatsAppClick("Corporate Website")}
               >
                 {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
               </Button>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold mb-4">E-commerce</h3>
-              <p className="text-3xl font-bold mb-6">$1300</p>
-              <p className="text-gray-600 mb-6">
+            <div className="bg-orange-500 p-6 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-4 text-white">E-commerce</h3>
+              <p className="text-3xl font-bold mb-6 text-white">$1300</p>
+              <p className="text-white mb-6">
                 {currentLang === "en"
                   ? "Sell your products online securely"
                   : currentLang === "es"
@@ -231,22 +230,22 @@ export default function Home() {
                     : "Venda seus produtos online com segurança"}
               </p>
               <Button
-                className="w-full bg-orange-500 hover:bg-orange-600"
+                className="w-full bg-white text-orange-500 hover:bg-orange-100"
                 onClick={() => handleWhatsAppClick("E-commerce")}
               >
                 {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
               </Button>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-semibold mb-4">
+            <div className="bg-orange-500 p-6 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-4 text-white">
                 {currentLang === "en"
                   ? "Advanced Features"
                   : currentLang === "es"
                     ? "Funcionalidades Avanzadas"
                     : "Recursos Avançados"}
               </h3>
-              <p className="text-3xl font-bold mb-6">$1500</p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-3xl font-bold mb-6 text-white">$1500</p>
+              <p className="text-white mb-6">
                 {currentLang === "en"
                   ? "Includes bookings, memberships and more"
                   : currentLang === "es"
@@ -254,7 +253,7 @@ export default function Home() {
                     : "Inclui reservas, associações e mais"}
               </p>
               <Button
-                className="w-full bg-orange-500 hover:bg-orange-600"
+                className="w-full bg-white text-orange-500 hover:bg-orange-100"
                 onClick={() => handleWhatsAppClick("Advanced Features")}
               >
                 {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
