@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 220 220 220;
+  --foreground: 0 0 0;
+  --primary: 255 115 38;
+  --primary-foreground: 255 255 255;
+  --secondary: 240 240 240;
+  --secondary-foreground: 0 0 0;
+  --muted: 200 200 200;
+  --muted-foreground: 115 115 115;
+  --accent: 240 240 240;
+  --accent-foreground: 0 0 0;
+  --destructive: 255 50 50;
+  --destructive-foreground: 255 255 255;
+  --border: 230 230 230;
+  --input: 230 230 230;
+  --ring: 255 115 38;
+  --radius: 0.5rem;
+}
+
+body {
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Custom styles for the language selector */
+select {
+  @apply appearance-none bg-transparent border border-gray-300 rounded-md px-3 py-1.5;
+  @apply focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent;
+}
+
+/* Custom styles for the project carousel */
+.project-preview {
+  @apply relative aspect-video rounded-lg overflow-hidden;
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.project-preview:hover {
+  @apply transform scale-105;
+}
+
+/* Custom styles for team member images */
+.team-member-image {
+  @apply rounded-full object-cover aspect-square;
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.team-member-image:hover {
+  @apply transform scale-105;
+}
+
+/* Custom styles for buttons */
+.button-primary {
+  @apply bg-orange-500 text-white hover:bg-orange-600;
+  @apply transition-colors duration-200;
+}
+
+/* Custom styles for sections */
+section {
+  padding-top: 4rem;
+  padding-bottom: 5rem;
+}
+
+/* Custom styles for headings */
+h1,
+h2,
+h3 {
+  @apply font-bold tracking-tight;
+}
+
+h1 {
+  @apply text-4xl md:text-6xl;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl;
+}
+
+h3 {
+  @apply text-xl md:text-2xl;
+}
+
+/* Custom styles for navigation arrows */
+.nav-arrow {
+  @apply absolute top-1/2 -translate-y-1/2;
+  @apply bg-white/80 p-2 rounded-full shadow-lg hover:bg-white;
+  @apply transition-all duration-200;
+}
+
+.nav-arrow.prev {
+  @apply left-4;
+}
+
+.nav-arrow.next {
+  @apply right-4;
+}
+
+/* Custom styles for cards */
+.card {
+  @apply bg-white rounded-lg shadow-lg p-6;
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.card:hover {
+  @apply shadow-xl transform -translate-y-1;
+}
+
+/* Custom styles for links */
+a {
+  @apply text-orange-500 hover:text-orange-600;
+  @apply transition-colors duration-200;
+}
+
+/* Custom styles for the header */
+.header {
+  @apply sticky top-0 z-50 w-full;
+  @apply bg-white/80 backdrop-blur-sm border-b;
+}
+
+/* Custom styles for the logo */
+.logo {
+  @apply h-8 w-auto;
+  @apply transition-opacity duration-200;
+}
+
+.logo:hover {
+  @apply opacity-80;
+}
+
