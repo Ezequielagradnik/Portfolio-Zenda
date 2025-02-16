@@ -10,34 +10,35 @@ const projects = [
   {
     url: "https://shop.kurtisconner.com",
     title: "Kurtis Conner Shop",
-    description: "E-commerce platform for merchandise",
     image: "/KURTIS.png",
   },
   {
     url: "https://linkup-eta.vercel.app",
     title: "LinkUp",
-    description: "Social networking application",
     image: "/linkup.png",
   },
   {
     url: "https://www.energyhumanities.ca",
     title: "Energy Humanities",
-    description: "Educational resource for energy studies",
     image: "/energy.png",
   },
   {
     url: "https://superiorrental.ae",
     title: "Superior Rental",
-    description: "Equipment rental service platform",
     image: "/super.png",
   },
   {
     url: "https://gmz.ae/es",
     title: "GMZ",
-    description: "Corporate website for GMZ",
+
     image: "/gmz.png",
   },
-  
+  {
+   url:"https://olbmotors.vercel.app/",
+   title:"OLB Motors",
+   image: "/olb.png",
+
+  }
 ]
 
 const pricingPlans = [
@@ -132,12 +133,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex justify-center gap-4"
             >
-              <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white">
-                {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
-              </Button>
-              <Button size="lg" variant="outline" className="border-orange-500 text-orange-500 hover:bg-orange-50">
-                {currentLang === "en" ? "Learn More" : currentLang === "es" ? "Saber Más" : "Saiba Mais"}
-              </Button>
+              
             </motion.div>
           </div>
         </div>
@@ -167,7 +163,7 @@ export default function Home() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2 text-gray-900">{project.title}</h3>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
+               
                   <a
                     href={project.url}
                     target="_blank"
