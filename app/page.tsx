@@ -226,12 +226,21 @@ export default function Home() {
         </div>
       </section>
 
+    
+
       {/* Pricing Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-b from-white to-orange-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
+          <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">
             {currentLang === "en" ? "Our Packages" : currentLang === "es" ? "Nuestros Paquetes" : "Nossos Pacotes"}
           </h2>
+          <p className="text-xl text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            {currentLang === "en"
+              ? "Choose the perfect plan for your business needs"
+              : currentLang === "es"
+                ? "Elige el plan perfecto para las necesidades de tu negocio"
+                : "Escolha o plano perfeito para as necessidades do seu negócio"}
+          </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {pricingPlans.map((plan, index) => (
               <motion.div
@@ -239,20 +248,22 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-lg shadow-md border border-gray-200"
+                className="bg-white p-8 rounded-lg shadow-lg border border-orange-100 hover:border-orange-300 transition-all duration-300"
               >
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">{plan.name}</h3>
-                <p className="text-3xl font-bold mb-6 text-orange-500">{plan.price}</p>
-                <ul className="mb-6 space-y-2">
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold mb-2 text-gray-900">{plan.name}</h3>
+                  <p className="text-4xl font-bold text-orange-500">{plan.price}</p>
+                </div>
+                <ul className="mb-8 space-y-4">
                   {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-600">
-                      <Check className="h-5 w-5 text-green-500 mr-2" />
-                      {feature}
+                    <li key={idx} className="flex items-center text-gray-700">
+                      <Check className="h-5 w-5 text-orange-500 mr-3 flex-shrink-0" />
+                      <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <Button
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white"
+                  className="w-full bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white shadow-md hover:shadow-lg transition-all duration-300"
                   onClick={() => handleWhatsAppClick(plan.name)}
                 >
                   {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
