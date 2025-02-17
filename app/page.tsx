@@ -85,7 +85,7 @@ export default function Home() {
       <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Image src="/zenda.png" alt="Zenda Logo" width={120} height={40} className="object-contain w-auto h-8" />
+            <Image src="/zenda.png" alt="Zenda Logo" width={240} height={80} className="object-contain w-auto h-14" />
             <nav className="flex items-center gap-6">
               <select
                 value={currentLang}
