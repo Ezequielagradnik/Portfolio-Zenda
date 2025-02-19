@@ -248,13 +248,13 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-lg shadow-lg border border-orange-100 hover:border-orange-300 transition-all duration-300"
+                className="bg-white p-8 rounded-lg shadow-lg border border-orange-100 hover:border-orange-300 transition-all duration-300 flex flex-col h-full"
               >
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold mb-2 text-gray-900">{plan.name}</h3>
                   <p className="text-4xl font-bold text-orange-500">{plan.price}</p>
                 </div>
-                <ul className="mb-8 space-y-4">
+                <ul className="mb-8 space-y-4 flex-1">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-gray-700">
                       <Check className="h-5 w-5 text-orange-500 mr-3 flex-shrink-0" />
@@ -263,7 +263,7 @@ export default function Home() {
                   ))}
                 </ul>
                 <Button
-                  className="w-full bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white shadow-md hover:shadow-lg transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white shadow-md hover:shadow-lg transition-all duration-300 mt-auto"
                   onClick={() => handleWhatsAppClick(plan.name)}
                 >
                   {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
