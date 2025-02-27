@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Mail, Phone, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import { Header } from "@/components/header"
 
 const projects = [
   {
@@ -13,7 +14,7 @@ const projects = [
     image: "/KURTIS.png",
   },
   {
-    url: "https://linkup-eta.vercel.app",
+    url: "https://www.linkupstartups.com",
     title: "LinkUp",
     image: "/linkup.png",
   },
@@ -30,37 +31,67 @@ const projects = [
   {
     url: "https://gmz.ae/es",
     title: "GMZ",
-
     image: "/gmz.png",
   },
   {
-   url:"https://olbmotors.vercel.app/",
-   title:"OLB Motors",
-   image: "/olb.png",
-
-  }
+    url: "https://olbmotors.vercel.app/",
+    title: "OLB Motors",
+    image: "/olb.png",
+  },
 ]
 
 const pricingPlans = [
   {
-    name: "Landing Page",
+    name: {
+      en: "Landing Page",
+      es: "Página de Aterrizaje",
+      pt: "Página de Destino",
+    },
     price: "$450",
-    features: ["Custom design", "Mobile responsive", "Contact form", "SEO optimization"],
+    features: {
+      en: ["Custom design", "Mobile responsive", "Contact form", "SEO optimization"],
+      es: ["Diseño personalizado", "Diseño responsive", "Formulario de contacto", "Optimización SEO"],
+      pt: ["Design personalizado", "Design responsivo", "Formulário de contato", "Otimização SEO"],
+    },
   },
   {
-    name: "Corporate Website",
+    name: {
+      en: "Corporate Website",
+      es: "Sitio Web Corporativo",
+      pt: "Site Corporativo",
+    },
     price: "$849",
-    features: ["Up to 5 pages", "Content Management System", "Basic SEO package"],
+    features: {
+      en: ["Up to 5 pages", "Content Management System", "Basic SEO package"],
+      es: ["Hasta 5 páginas", "Sistema de gestión de contenido", "Paquete SEO básico"],
+      pt: ["Até 5 páginas", "Sistema de gerenciamento de conteúdo", "Pacote SEO básico"],
+    },
   },
   {
-    name: "E-commerce",
+    name: {
+      en: "E-commerce",
+      es: "Comercio Electrónico",
+      pt: "E-commerce",
+    },
     price: "$1300",
-    features: ["Product catalog", "Shopping cart", "Secure payment gateway", "Order management"],
+    features: {
+      en: ["Product catalog", "Shopping cart", "Secure payment gateway", "Order management"],
+      es: ["Catálogo de productos", "Carrito de compras", "Pasarela de pago segura", "Gestión de pedidos"],
+      pt: ["Catálogo de produtos", "Carrinho de compras", "Gateway de pagamento seguro", "Gestão de pedidos"],
+    },
   },
   {
-    name: "Advanced Features",
+    name: {
+      en: "Advanced Features",
+      es: "Características Avanzadas",
+      pt: "Recursos Avançados",
+    },
     price: "$1500",
-    features: ["Custom functionality", "API integrations", "Advanced analytics", "Priority support"],
+    features: {
+      en: ["Custom functionality", "API integrations", "Advanced analytics", "Priority support"],
+      es: ["Funcionalidad personalizada", "Integraciones API", "Análisis avanzado", "Soporte prioritario"],
+      pt: ["Funcionalidade personalizada", "Integrações API", "Análise avançada", "Suporte prioritário"],
+    },
   },
 ]
 
@@ -82,26 +113,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <Image src="/zenda.png" alt="Zenda Logo" width={240} height={80} className="object-contain w-auto h-14" />
-            <nav className="flex items-center gap-6">
-              <select
-                value={currentLang}
-                onChange={(e) => setCurrentLang(e.target.value)}
-                className="rounded-md border-0 bg-transparent py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-orange-500"
-              >
-                {languages.map((lang) => (
-                  <option key={lang.code} value={lang.code}>
-                    {lang.name}
-                  </option>
-                ))}
-              </select>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languages} />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-orange-50 to-white py-20">
@@ -127,20 +139,12 @@ export default function Home() {
                   ? "Transformando Ideas en Poderosas Experiencias Digitales"
                   : "Transformando Ideias em Poderosas Experiências Digitais"}
             </motion.p>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex justify-center gap-4"
-            >
-              
-            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section className="py-20 bg-white">
+      {/* Services Section */}
+      <section id="services" className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
             {currentLang === "en" ? "Our Projects" : currentLang === "es" ? "Nuestros Proyectos" : "Nossos Projetos"}
@@ -163,7 +167,6 @@ export default function Home() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2 text-gray-900">{project.title}</h3>
-               
                   <a
                     href={project.url}
                     target="_blank"
@@ -193,8 +196,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 bg-gray-50">
+      {/* About Section */}
+      <section id="about" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
             {currentLang === "en" ? "Our Team" : currentLang === "es" ? "Nuestro Equipo" : "Nossa Equipe"}
@@ -226,10 +229,8 @@ export default function Home() {
         </div>
       </section>
 
-    
-
       {/* Pricing Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-orange-50">
+      <section id="pricing" className="py-20 bg-gradient-to-b from-white to-orange-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-4 text-gray-900">
             {currentLang === "en" ? "Our Packages" : currentLang === "es" ? "Nuestros Paquetes" : "Nossos Pacotes"}
@@ -244,18 +245,20 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {pricingPlans.map((plan, index) => (
               <motion.div
-                key={plan.name}
+                key={plan.name[currentLang as keyof typeof plan.name]}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white p-8 rounded-lg shadow-lg border border-orange-100 hover:border-orange-300 transition-all duration-300 flex flex-col h-full"
               >
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold mb-2 text-gray-900">{plan.name}</h3>
+                  <h3 className="text-2xl font-bold mb-2 text-gray-900">
+                    {plan.name[currentLang as keyof typeof plan.name]}
+                  </h3>
                   <p className="text-4xl font-bold text-orange-500">{plan.price}</p>
                 </div>
                 <ul className="mb-8 space-y-4 flex-1">
-                  {plan.features.map((feature, idx) => (
+                  {plan.features[currentLang as keyof typeof plan.features].map((feature: string, idx: number) => (
                     <li key={idx} className="flex items-center text-gray-700">
                       <Check className="h-5 w-5 text-orange-500 mr-3 flex-shrink-0" />
                       <span>{feature}</span>
@@ -264,7 +267,7 @@ export default function Home() {
                 </ul>
                 <Button
                   className="w-full bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white shadow-md hover:shadow-lg transition-all duration-300 mt-auto"
-                  onClick={() => handleWhatsAppClick(plan.name)}
+                  onClick={() => handleWhatsAppClick(plan.name[currentLang as keyof typeof plan.name])}
                 >
                   {currentLang === "en" ? "Get Started" : currentLang === "es" ? "Comenzar" : "Começar"}
                 </Button>
