@@ -45,15 +45,15 @@ export function Header({ currentLang, setCurrentLang, languages }: HeaderProps) 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
+        <div className="flex h-24 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
               src="/zenda.png"
               alt="Zenda Logo"
-              width={240}
-              height={80}
-              className="object-contain w-auto h-14"
+              width={300}
+              height={100}
+              className="object-contain w-auto h-20"
               priority
             />
           </Link>
