@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Mail, ExternalLink, Code, Palette, Search } from "lucide-react"
+import { Mail, ExternalLink, Code, Palette, Search, Target } from "lucide-react"
 import { Header } from "@/components/header"
 
 const projects = [
@@ -53,29 +53,274 @@ export default function Home() {
       <Header currentLang={currentLang} setCurrentLang={setCurrentLang} languages={languages} />
 
       {/* Hero Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 relative overflow-hidden">
+        {/* Animated background elements */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.1 }}
+          transition={{ duration: 2 }}
+          className="absolute inset-0 overflow-hidden"
+        >
+          <div className="absolute top-0 left-0 w-96 h-96 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
+          <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
+        </motion.div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.h1
+            <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-5xl font-bold tracking-tight sm:text-6xl text-gray-900 mb-6"
+              className="relative"
             >
-              <span className="text-orange-500">Zenda</span> Web Solutions
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mt-6 text-xl leading-8 text-gray-600 mb-8"
-            >
+              <motion.h1
+                className="text-5xl font-bold tracking-tight sm:text-6xl text-gray-900 mb-6"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.2,
+                  ease: [0, 0.71, 0.2, 1.01],
+                }}
+              >
+                <motion.span
+                  className="text-orange-500 inline-block"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  Zenda
+                </motion.span>{" "}
+                Web Solutions
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="mt-6 text-xl leading-8 text-gray-600 mb-8"
+              >
+                {currentLang === "en"
+                  ? "Transforming Ideas into Powerful Digital Experiences"
+                  : currentLang === "es"
+                    ? "Transformando Ideas en Poderosas Experiencias Digitales"
+                    : "Transformando Ideias em Poderosas Experiências Digitais"}
+              </motion.p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Overview Section */}
+      <section className="py-24 bg-orange-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-4xl font-bold mb-6">
               {currentLang === "en"
-                ? "Transforming Ideas into Powerful Digital Experiences"
+                ? "We're Not Your Average Agency"
                 : currentLang === "es"
-                  ? "Transformando Ideas en Poderosas Experiencias Digitales"
-                  : "Transformando Ideias em Poderosas Experiências Digitais"}
-            </motion.p>
+                  ? "No Somos una Agencia Común"
+                  : "Não Somos uma Agência Comum"}
+            </h2>
+            <p className="text-lg text-gray-600">
+              {currentLang === "en"
+                ? "We offer comprehensive web solutions with premium features included in every project"
+                : currentLang === "es"
+                  ? "Ofrecemos soluciones web integrales con características premium incluidas en cada proyecto"
+                  : "Oferecemos soluções web abrangentes com recursos premium incluídos em cada projeto"}
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-20">
+            {/* Core Services */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-2xl p-8 shadow-xl"
+            >
+              <h3 className="text-2xl font-semibold mb-6 text-gray-900">
+                {currentLang === "en"
+                  ? "Included in Every Project"
+                  : currentLang === "es"
+                    ? "Incluido en Cada Proyecto"
+                    : "Incluído em Cada Projeto"}
+              </h3>
+              <ul className="space-y-6">
+                {[
+                  {
+                    en: "Custom UX/UI Design & Optimization",
+                    es: "Diseño UX/UI Personalizado y Optimización",
+                    pt: "Design UX/UI Personalizado e Otimização",
+                  },
+                  {
+                    en: "On-page SEO Implementation",
+                    es: "Implementación de SEO en página",
+                    pt: "Implementação de SEO na página",
+                  },
+                  {
+                    en: "Content Management (Text & Images)",
+                    es: "Gestión de Contenido (Texto e Imágenes)",
+                    pt: "Gestão de Conteúdo (Texto e Imagens)",
+                  },
+                  {
+                    en: "FREE Professional Logo Design",
+                    es: "Diseño de Logo Profesional GRATIS",
+                    pt: "Design de Logo Profissional GRÁTIS",
+                  },
+                  {
+                    en: "Responsive Website Development",
+                    es: "Desarrollo Web Responsivo",
+                    pt: "Desenvolvimento Web Responsivo",
+                  },
+                  {
+                    en: "Third-party Integrations (APIs, CRM, payment gateways, chatbots)",
+                    es: "Integraciones con terceros (APIs, CRM, pasarelas de pago, chatbots)",
+                    pt: "Integrações com terceiros (APIs, CRM, gateways de pagamento, chatbots)",
+                  },
+                  {
+                    en: "Advanced Web Security (SSL, malware protection, automatic backups)",
+                    es: "Seguridad web avanzada (SSL, protección contra malware, backups automáticos)",
+                    pt: "Segurança web avançada (SSL, proteção contra malware, backups automáticos)",
+                  },
+                  {
+                    en: "Hosting and Domain (management and configuration)",
+                    es: "Hosting y dominio (gestión y configuración)",
+                    pt: "Hosting e domínio (gestão e configuração)",
+                  },
+                ].map((service, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    className="flex items-center gap-3 text-gray-700"
+                  >
+                    <svg
+                      className="w-5 h-5 text-orange-500 flex-shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    {service[currentLang as keyof typeof service]}
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Additional Services */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-2xl p-8 shadow-xl"
+            >
+              <h3 className="text-2xl font-semibold mb-6 text-gray-900">
+                {currentLang === "en"
+                  ? "Optional Monthly Services"
+                  : currentLang === "es"
+                    ? "Servicios Mensuales Opcionales"
+                    : "Serviços Mensais Opcionais"}
+              </h3>
+              <ul className="space-y-4">
+                {[
+                  {
+                    en: "Monthly Analytics Reports",
+                    es: "Informes Mensuales de Analytics",
+                    pt: "Relatórios Mensais de Analytics",
+                    description: {
+                      en: "Detailed insights about your website's performance and visitor behavior",
+                      es: "Información detallada sobre el rendimiento de su sitio web y el comportamiento de los visitantes",
+                      pt: "Informações detalhadas sobre o desempenho do seu site e o comportamento dos visitantes",
+                    },
+                  },
+                  {
+                    en: "Digital Advertising Campaigns",
+                    es: "Campañas de Publicidad Digital",
+                    pt: "Campanhas de Publicidade Digital",
+                    description: {
+                      en: "Strategic ad campaigns on Google, Meta, and other platforms to reach your target audience",
+                      es: "Campañas publicitarias estratégicas en Google, Meta y otras plataformas para alcanzar a tu público objetivo",
+                      pt: "Campanhas publicitárias estratégicas no Google, Meta e outras plataformas para alcançar seu público-alvo",
+                    },
+                  },
+                  {
+                    en: "Website Maintenance",
+                    es: "Mantenimiento del Sitio Web",
+                    pt: "Manutenção do Site",
+                    description: {
+                      en: "Regular updates, security checks, and content modifications",
+                      es: "Actualizaciones regulares, controles de seguridad y modificaciones de contenido",
+                      pt: "Atualizações regulares, verificações de segurança e modificações de conteúdo",
+                    },
+                  },
+                ].map((service, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    className="bg-white-50 rounded-lg p-4"
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      <svg
+                        className="w-5 h-5 text-orange-500 flex-shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                        />
+                      </svg>
+                      <span className="font-semibold">{String(service[currentLang as keyof typeof service])}</span>
+                    </div>
+                    <p className="text-sm text-gray-600 ml-8">
+                      {service.description[currentLang as keyof typeof service.description]}
+                    </p>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center mt-12">
+            <div className="inline-flex items-center gap-4">
+              <p className="text-lg text-gray-600">
+                {currentLang === "en"
+                  ? "Interested in our services?"
+                  : currentLang === "es"
+                    ? "¿Te interesan nuestros servicios?"
+                    : "Interessado em nossos serviços?"}
+              </p>
+              <motion.a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault()
+                  document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })
+                }}
+                className="inline-flex items-center gap-2 bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="font-medium">
+                  {currentLang === "en" ? "Contact Us" : currentLang === "es" ? "Contáctanos" : "Contate-nos"}
+                </span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </motion.a>
+            </div>
           </div>
         </div>
       </section>
@@ -93,15 +338,19 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
+                whileHover={{ y: -5 }}
+                className="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl"
               >
-                <Image
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  width={600}
-                  height={400}
-                  className="w-full h-48 object-cover"
-                />
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    width={600}
+                    height={400}
+                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2 text-gray-900">{project.title}</h3>
                   <a
@@ -183,10 +432,17 @@ export default function Home() {
             <h3 className="text-2xl font-semibold text-center mb-8 text-gray-900">
               {currentLang === "en" ? "Extended Team" : currentLang === "es" ? "Equipo Extendido" : "Equipe Estendida"}
             </h3>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              {" "}
+              {/* Cambiado de grid-cols-4 a grid-cols-2 */}
               <div className="text-center h-full">
-                <div className="bg-white p-6 rounded-lg shadow-md h-full flex flex-col">
-                  <Code className="w-12 h-12 mx-auto mb-4 text-orange-500 flex-shrink-0" />
+                <div className="bg-white p-8 rounded-lg shadow-md h-full flex flex-col group hover:shadow-2xl hover:bg-orange-50/50 transition-all duration-300 hover:-translate-y-2">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="w-12 h-12 mx-auto mb-4 text-orange-500 flex-shrink-0"
+                  >
+                    <Code className="w-full h-full" />
+                  </motion.div>
                   <h4 className="font-semibold mb-2 flex-shrink-0">
                     {currentLang === "en"
                       ? "Software Engineers"
@@ -204,8 +460,13 @@ export default function Home() {
                 </div>
               </div>
               <div className="text-center h-full">
-                <div className="bg-white p-6 rounded-lg shadow-md h-full flex flex-col">
-                  <Palette className="w-12 h-12 mx-auto mb-4 text-orange-500 flex-shrink-0" />
+                <div className="bg-white p-8 rounded-lg shadow-md h-full flex flex-col group hover:shadow-2xl hover:bg-orange-50/50 transition-all duration-300 hover:-translate-y-2">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="w-12 h-12 mx-auto mb-4 text-orange-500 flex-shrink-0"
+                  >
+                    <Palette className="w-full h-full" />
+                  </motion.div>
                   <h4 className="font-semibold mb-2 flex-shrink-0">
                     {currentLang === "en"
                       ? "Design Team"
@@ -223,8 +484,13 @@ export default function Home() {
                 </div>
               </div>
               <div className="text-center h-full">
-                <div className="bg-white p-6 rounded-lg shadow-md h-full flex flex-col">
-                  <Search className="w-12 h-12 mx-auto mb-4 text-orange-500 flex-shrink-0" />
+                <div className="bg-white p-8 rounded-lg shadow-md h-full flex flex-col group hover:shadow-2xl hover:bg-orange-50/50 transition-all duration-300 hover:-translate-y-2">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="w-12 h-12 mx-auto mb-4 text-orange-500 flex-shrink-0"
+                  >
+                    <Search className="w-full h-full" />
+                  </motion.div>
                   <h4 className="font-semibold mb-2 flex-shrink-0">SEO Specialist</h4>
                   <p className="text-sm text-gray-500 flex-grow">
                     {currentLang === "en"
@@ -235,13 +501,37 @@ export default function Home() {
                   </p>
                 </div>
               </div>
+              <div className="text-center h-full">
+                <div className="bg-white p-8 rounded-lg shadow-md h-full flex flex-col group hover:shadow-2xl hover:bg-orange-50/50 transition-all duration-300 hover:-translate-y-2">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="w-12 h-12 mx-auto mb-4 text-orange-500 flex-shrink-0"
+                  >
+                    <Target className="w-full h-full" />
+                  </motion.div>
+                  <h4 className="font-semibold mb-2 flex-shrink-0">
+                    {currentLang === "en"
+                      ? "Marketing Specialist"
+                      : currentLang === "es"
+                        ? "Especialista en Marketing"
+                        : "Especialista em Marketing"}
+                  </h4>
+                  <p className="text-sm text-gray-500 flex-grow">
+                    {currentLang === "en"
+                      ? "Marketing graduate with expertise in digital strategy and campaign optimization."
+                      : currentLang === "es"
+                        ? "Licenciado en Marketing con experiencia en estrategia digital y optimización de campañas."
+                        : "Graduado em Marketing com experiência em estratégia digital e otimização de campanhas."}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-orange-50">
+      <section id="contact" className="py-20 bg-orange-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-6 text-gray-900">
             {currentLang === "en" ? "Contact Us" : currentLang === "es" ? "Contáctanos" : "Contate-nos"}
@@ -385,4 +675,3 @@ export default function Home() {
     </div>
   )
 }
-
