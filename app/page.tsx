@@ -100,10 +100,10 @@ export default function Home() {
                 className="mt-6 text-xl leading-8 text-gray-600 mb-8"
               >
                 {currentLang === "en"
-                  ? "Transforming Ideas into Powerful Digital Experiences"
+                  ? "Transforming ideas into powerful digital experiences"
                   : currentLang === "es"
-                    ? "Transformando Ideas en Poderosas Experiencias Digitales"
-                    : "Transformando Ideias em Poderosas Experiências Digitais"}
+                    ? "Transformando ideas en poderosas experiencias digitales"
+                    : "Transformando ideias em poderosas experiências digitais"}
               </motion.p>
             </motion.div>
           </div>
@@ -121,10 +121,10 @@ export default function Home() {
           >
             <h2 className="text-4xl font-bold mb-6">
               {currentLang === "en"
-                ? "We're Not Your Average Agency"
+                ? "We're not your average agency"
                 : currentLang === "es"
-                  ? "No Somos una Agencia Común"
-                  : "Não Somos uma Agência Comum"}
+                  ? "No somos una agencia común"
+                  : "Não somos uma agência comum"}
             </h2>
             <p className="text-lg text-gray-600">
               {currentLang === "en"
@@ -145,10 +145,10 @@ export default function Home() {
             >
               <h3 className="text-2xl font-semibold mb-6 text-gray-900">
                 {currentLang === "en"
-                  ? "Included in Every Project"
+                  ? "Included in every project"
                   : currentLang === "es"
-                    ? "Incluido en Cada Proyecto"
-                    : "Incluído em Cada Projeto"}
+                    ? "Incluido en cada proyecto"
+                    : "Incluído em cada projeto"}
               </h3>
               <ul className="space-y-6">
                 {[
@@ -223,10 +223,10 @@ export default function Home() {
             >
               <h3 className="text-2xl font-semibold mb-6 text-gray-900">
                 {currentLang === "en"
-                  ? "Optional Monthly Services"
+                  ? "Optional monthly services"
                   : currentLang === "es"
-                    ? "Servicios Mensuales Opcionales"
-                    : "Serviços Mensais Opcionais"}
+                    ? "Servicios mensuales opcionales"
+                    : "Serviços mensais opcionais"}
               </h3>
               <ul className="space-y-4">
                 {[
