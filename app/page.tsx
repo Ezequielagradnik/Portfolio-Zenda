@@ -158,7 +158,7 @@ export default function Home() {
                     pt: "Design UX/UI Personalizado e Otimização",
                   },
                   {
-                    en: "On-page SEO Implementation",
+                    en: "On-page SEO implementation",
                     es: "Implementación de SEO en página",
                     pt: "Implementação de SEO na página",
                   },
@@ -241,9 +241,9 @@ export default function Home() {
                     },
                   },
                   {
-                    en: "Digital Advertising Campaigns",
-                    es: "Campañas de Publicidad Digital",
-                    pt: "Campanhas de Publicidade Digital",
+                    en: "Digital advertising campaigns",
+                    es: "Campañas de publicidad digital",
+                    pt: "Campanhas de publicidade digital",
                     description: {
                       en: "Strategic ad campaigns on Google, Meta, and other platforms to reach your target audience",
                       es: "Campañas publicitarias estratégicas en Google, Meta y otras plataformas para alcanzar a tu público objetivo",
@@ -251,9 +251,9 @@ export default function Home() {
                     },
                   },
                   {
-                    en: "Website Maintenance",
-                    es: "Mantenimiento del Sitio Web",
-                    pt: "Manutenção do Site",
+                    en: "Website maintenance",
+                    es: "Mantenimiento del sitio Web",
+                    pt: "Manutenção do site",
                     description: {
                       en: "Regular updates, security checks, and content modifications",
                       es: "Actualizaciones regulares, controles de seguridad y modificaciones de contenido",
