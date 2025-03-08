@@ -231,9 +231,9 @@ export default function Home() {
               <ul className="space-y-4">
                 {[
                   {
-                    en: "Monthly Analytics Reports",
-                    es: "Informes Mensuales de Analytics",
-                    pt: "Relatórios Mensais de Analytics",
+                    en: "Monthly analytics reports",
+                    es: "Informes mensuales de analytics",
+                    pt: "Relatórios mensais de analytics",
                     description: {
                       en: "Detailed insights about your website's performance and visitor behavior",
                       es: "Información detallada sobre el rendimiento de su sitio web y el comportamiento de los visitantes",
