@@ -37,6 +37,22 @@ const projects = [
     title: "OLB Motors",
     image: "/olb.png",
   },
+  {
+    url:"https://www.car-mart.com/",
+    title:"Car Mart",
+    image:"/car.png",
+  },
+  {
+    url:"https://www.bymanu.com.br/",
+    title:"By Manu",
+    image:"/bymanu.png",
+  },
+  {
+    url:"https://oscarluxury.com/",
+    title:"Oscar Luxury",
+    image:"/oscar.png",
+  },
+
 ]
 
 const languages = [
