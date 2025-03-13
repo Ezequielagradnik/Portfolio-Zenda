@@ -417,10 +417,10 @@ export default function Home() {
               <p className="text-gray-600 mb-2">CEO & Co-founder</p>
               <p className="text-sm text-gray-500">
                 {currentLang === "en"
-                  ? "A 17-year-old UX/UI design genius with an exceptional eye for creating beautiful and intuitive user experiences."
+                  ? "CEO & Co-founder"
                   : currentLang === "es"
-                    ? "Un genio del diseño UX/UI de 17 años con un ojo excepcional para crear experiencias de usuario hermosas e intuitivas."
-                    : "Um gênio do design UX/UI de 17 anos com um olhar excepcional para criar experiências de usuário bonitas e intuitivas."}
+                    ? "CEO & Co-founder"
+                    : "CEO & Co-founder"}
               </p>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} className="text-center">
@@ -434,11 +434,6 @@ export default function Home() {
               <h3 className="text-xl font-semibold text-gray-900">Ezequiel Agradnik</h3>
               <p className="text-gray-600 mb-2">CTO & Co-founder</p>
               <p className="text-sm text-gray-500">
-                {currentLang === "en"
-                  ? "A 17-year-old programming prodigy who started coding at age 12, turning complex technical challenges into elegant solutions."
-                  : currentLang === "es"
-                    ? "Un prodigio de la programación de 17 años que comenzó a programar a los 12, convirtiendo desafíos técnicos complejos en soluciones elegantes."
-                    : "Um prodígio da programação de 17 anos que começou a programar aos 12, transformando desafios técnicos complexos em soluções elegantes."}
               </p>
             </motion.div>
           </div>
@@ -450,7 +445,7 @@ export default function Home() {
             </h3>
             <div className="grid md:grid-cols-2 gap-8">
               {" "}
-              {/* Cambiado de grid-cols-4 a grid-cols-2 */}
+              {}
               <div className="text-center h-full">
                 <div className="bg-white p-8 rounded-lg shadow-md h-full flex flex-col group hover:shadow-2xl hover:bg-orange-50/50 transition-all duration-300 hover:-translate-y-2">
                   <motion.div
@@ -653,22 +648,7 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/*<div className="mt-12 flex flex-col items-center gap-4">
-              <a
-                href="mailto:eagradnik@gmail.com"
-                className="flex items-center gap-2 text-gray-600 hover:text-orange-500 transition-colors duration-300"
-              >
-                <Mail className="h-5 w-5" />
-                eagradnik@gmail.com
-              </a>
-              <a
-                href="tel:+5491131954757"
-                className="flex items-center gap-2 text-gray-600 hover:text-orange-500 transition-colors duration-300"
-              >
-                <Phone className="h-5 w-5" />
-                +54 911 3195-4757
-              </a>
-            </div>*/}
+            {/* Social Media Links */}
           </div>
         </div>
       </section>
